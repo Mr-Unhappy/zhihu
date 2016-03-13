@@ -39,12 +39,12 @@
         android:layout_height="match_parent">
     </FrameLayout>
 
-    <GridView
+    <ListView
         android:id="@+id/gv_menu"
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#ff0000"></GridView>
+        android:background="#ff0000"></ListView>
 
 
 </android.support.v4.widget.DrawerLayout>

@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.GridView;
+import android.widget.ListView;
+
 import com.liu.zhihu.R;
 import com.liu.zhihu.fragment.ContentFragment;
 
@@ -17,7 +19,7 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity {
 
-    private GridView menu;
+    private ListView menu;
     private FrameLayout content;
     private DrawerLayout drawerLayout;
     private DrawerLayout.DrawerListener drawerListener;
@@ -30,7 +32,7 @@ public class MainActivity extends BaseActivity {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         content = (FrameLayout) findViewById(R.id.fl_content);
-        menu = (GridView) findViewById(R.id.gv_menu);
+        menu = (ListView) findViewById(R.id.gv_menu);
 
         final List<String> list = new ArrayList<>();
 
