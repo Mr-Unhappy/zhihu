@@ -18,13 +18,8 @@ public class RequestService {
 		return requestService;
 	}
 
-	private void register(String phone,String pwd, Class<? extends BaseEntity> clazz, RequestListener listener){
-		Map<String,String> paramsMap =
-	}
+	private void register(String phone,String pwd, Class<? extends BaseEntity> clazz, NetRequest.RequestListener listener){
+		Map<String,String> paramsMap = NetConfig.getRegisterParams(phone,pwd);
 
-	public interface RequestListener{
-		public void onSuccess();
-
-		public void onFailed();
 	}
 }

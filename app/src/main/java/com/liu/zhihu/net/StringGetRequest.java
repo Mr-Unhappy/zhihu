@@ -15,7 +15,7 @@ public class StringGetRequest extends Request<String> {
 
 	private Response.Listener<String> mListener;
 
-	public StringGetRequest(int method, String url, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+	public StringGetRequest(String url, Response.Listener<String> listener, Response.ErrorListener errorListener) {
 		super(Method.GET, url, errorListener);
 		this.mListener = listener;
 	}
