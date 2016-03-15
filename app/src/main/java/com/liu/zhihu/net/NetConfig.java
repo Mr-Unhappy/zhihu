@@ -1,5 +1,7 @@
 package com.liu.zhihu.net;
 
+import com.liu.zhihu.application.MyApplication;
+import com.liu.zhihu.utils.DeviceHelper;
 import com.liu.zhihu.utils.StringHelper;
 
 import java.util.Arrays;
@@ -12,6 +14,12 @@ import java.util.Map;
 public class NetConfig {
 
     public static final String FLAG = "=";
+    public static final String BASE_URL = "http://news-at.zhihu.com/api/" + DeviceHelper.getVersionCode(MyApplication.getContext()) + "/";
+
+    public static String getRequestUrl(String url) {
+
+        return BASE_URL + url;
+    }
 
     public static class Params {
         public static final String token = "token";
@@ -51,12 +59,11 @@ public class NetConfig {
 
 
     /**
-     *
      * @param isNeedToken
      * @param token
      * @param strs
      * @return MD5 加密后的参数值
-     *
+     * <p/>
      * 此过程为MD5加密过程是计算了 所有参数放在一起的MD5值
      */
     public static String getCheckToken(boolean isNeedToken, String token, String... strs) {

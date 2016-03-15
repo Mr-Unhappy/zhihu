@@ -13,6 +13,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.liu.zhihu.entity.BaseEntity;
+import com.liu.zhihu.utils.DeviceHelper;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -36,8 +37,15 @@ public class NetRequest {
 //    }
 
     public <T> void get(String url, Class<? extends BaseEntity> clazz, Map<String, String> params, RequestListener listener) {
-
-        get(url, clazz, params, listener, new DefaultRetryPolicy(10 * 1000, 0, 1), Priority.NORMAL);
+        if (!DeviceHelper.checkNetwork(mContext)) {
+            listener.onFailed(new Exception(), "无网络连接");
+            return;
+        }
+        String requestUrl = NetConfig.getRequestUrl(url);
+        
+        // // TODO: 2016/3/15 接着往下写
+        
+        get(requestUrl, clazz, params, listener, new DefaultRetryPolicy(10 * 1000, 0, 1), Priority.NORMAL);
     }
 
     private <T> void get(String url, final Class<? extends BaseEntity> clazz, final Map<String, String> params, final RequestListener callback, RetryPolicy retryPolicy, final Priority priority) {
