@@ -12,7 +12,10 @@ import android.widget.GridView;
 import android.widget.ListView;
 
 import com.liu.zhihu.R;
+import com.liu.zhihu.entity.BaseEntity;
 import com.liu.zhihu.fragment.ContentFragment;
+import com.liu.zhihu.net.NetRequest;
+import com.liu.zhihu.net.RequestService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +31,8 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main1);
+
+        queryData();
 
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -83,5 +88,19 @@ public class MainActivity extends BaseActivity {
 
         drawerLayout.setDrawerListener(drawerListener);
 
+    }
+
+    private void queryData() {
+        RequestService.getInstance().getNews(this, BaseEntity.class, new NetRequest.RequestListener() {
+            @Override
+            public void onSuccess(BaseEntity result) {
+
+            }
+
+            @Override
+            public void onFailed(Exception exception, String msg) {
+
+            }
+        });
     }
 }

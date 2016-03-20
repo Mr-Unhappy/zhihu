@@ -16,6 +16,10 @@ public class NetConfig {
     public static final String FLAG = "=";
     public static final String BASE_URL = "http://news-at.zhihu.com/api/" + DeviceHelper.getVersionCode(MyApplication.getContext()) + "/";
 
+    public static final String REGISTE = "registe";
+    public static final String START_IMAGE = "start-image/1080*1776";
+    public static final String GET_NEWS = "news/latest";
+
     public static String getRequestUrl(String url) {
 
         return BASE_URL + url;
