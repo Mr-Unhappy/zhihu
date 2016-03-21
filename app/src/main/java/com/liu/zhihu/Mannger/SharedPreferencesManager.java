@@ -1,4 +1,4 @@
-package com.liu.zhihu.Mannger;
+package com.liu.zhihu.mannger;
 
 import android.content.Context;
 import android.content.SharedPreferences;

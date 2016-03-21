@@ -32,9 +32,6 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main1);
 
-        queryData();
-
-
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         content = (FrameLayout) findViewById(R.id.fl_content);
         menu = (ListView) findViewById(R.id.gv_menu);
@@ -67,40 +64,29 @@ public class MainActivity extends BaseActivity {
         drawerListener = new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
-                System.out.println("滑动   +++++++  ");
+
             }
 
             @Override
             public void onDrawerOpened(View drawerView) {
-                showToast("打开");
+
             }
 
             @Override
             public void onDrawerClosed(View drawerView) {
-                showToast("关闭");
+
             }
 
             @Override
             public void onDrawerStateChanged(int newState) {
-                System.out.println("状态变化");
+
             }
         };
 
         drawerLayout.setDrawerListener(drawerListener);
 
+
+
     }
 
-    private void queryData() {
-        RequestService.getInstance().getNews(this, BaseEntity.class, new NetRequest.RequestListener() {
-            @Override
-            public void onSuccess(BaseEntity result) {
-
-            }
-
-            @Override
-            public void onFailed(Exception exception, String msg) {
-
-            }
-        });
-    }
 }
