@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.hardware.display.DisplayManager;
 
+import org.xutils.x;
+
 /**
  * Created by Ming on 2016/2/24.
  */
@@ -17,6 +19,8 @@ public class MyApplication extends Application {
         super.onCreate();
         applicationContext = this;
         density = getResources().getDisplayMetrics().density;
+        x.Ext.init(this);
+        x.Ext.setDebug(true);
     }
 
     public int px2dp(int px) {
