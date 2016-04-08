@@ -4,13 +4,14 @@
               android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/background_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@drawable/item_index_bg"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/item_index_bg">
 
         <TextView
             android:id="@+id/tv_des"
@@ -21,7 +22,8 @@
             android:lines="3"
             android:padding="15dp"
             android:text="这是测试文字，这是测试文字 这是测试文字这是测试文字这是测试文字这是测"
-            android:textSize="20dp"/>
+            android:textSize="18dp"
+            android:textColor="@color/black"/>
 
         <ImageView
             android:id="@+id/iv_item_icon"

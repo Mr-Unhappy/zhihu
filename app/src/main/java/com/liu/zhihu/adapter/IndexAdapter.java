@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.liu.zhihu.R;
 import com.liu.zhihu.entity.NewsEntity;
-import com.squareup.picasso.Picasso;
 
 import org.xutils.x;
 
@@ -84,65 +83,38 @@ public class IndexAdapter extends MyBaseAdapter<NewsEntity> {
             convertView = View.inflate(mContext, R.layout.item_index, null);
             holder.textView = (TextView) convertView.findViewById(R.id.tv_des);
             holder.imageView = (ImageView) convertView.findViewById(R.id.iv_item_icon);
-            if(type == 0){
-                holder.imageView.setVisibility(View.GONE);
-            } else {
-                holder.imageView.setVisibility(View.VISIBLE);
-            }
+            holder.view = convertView.findViewById(R.id.background_view);
             convertView.setTag(holder);
         } else {
-            if(type == 0){
-
-            } else {
-
-            }
             holder = (ViewHolder) convertView.getTag();
         }
-        System.out.println(position);
 
-        if(position == 0){
-            holder.textView.setText(mList.get(0).getDate());
-        } else {
-            System.out.println(mList.get(0).getStories().get(position - 1).getTitle());
-            holder.textView.setText("");
-            holder.textView.setText(mList.get(0).getStories().get(position - 1).getTitle());
-            Picasso.with(mContext).load(mList.get(0).getStories().get(position-1).getImages().get(0)).into(holder.imageView);
+        Log.e("size", mList.get(0).getStories().size() + "");
+
+        int frontCount = 0;
+        if (i - 1 > 0) {
+            for (int j = 0; j < i; j++) {
+                frontCount = frontCount + mList.get(j).getStories().size();
+            }
         }
+        frontCount += i;
 
-
-
-//        Log.e("size", mList.get(0).getStories().size() + "");
-//
-//        int frontCount = 0;
-//        if (i - 1 > 0) {
-//            for (int j = 0 ;j < i; j++){
-//                frontCount = frontCount + mList.get(j).getStories().size();
-//            }
-//        }
-//        frontCount += i;
-//
-//        System.out.println("position    =====  " + position);
-//
-//        if(type == 1){
-//            holder.textView.setText(mList.get(i - 1).getStories().get(position - frontCount).getTitle());
-//        }
-//
-//        if (type == 0) {
-//
-//            holder.textView.setText(mList.get(i).getDate());
-//        } else {
-//
-//            System.out.println("i                   ==============    " + i);
-//
-//
-//            holder.textView.setText(mList.get(i - 1).getStories().get(position - frontCount).getTitle());
-//            x.image().bind(holder.imageView,mList.get(i - 1).getStories().get(position - frontCount).getImages().get(0));
-//        }
+        if (type == 0) {
+            holder.view.setBackgroundColor(mContext.getResources().getColor(R.color.transparent));
+            holder.textView.setText(mList.get(i).getDate());
+            holder.imageView.setVisibility(View.GONE);
+        } else {
+//            holder.view.setBackgroundResource(R.drawable.item_index_bg);
+            holder.imageView.setVisibility(View.VISIBLE);
+            holder.textView.setText(mList.get(i - 1).getStories().get(position - frontCount).getTitle());
+            x.image().bind(holder.imageView, mList.get(i - 1).getStories().get(position - frontCount).getImages().get(0));
+        }
         return convertView;
     }
 
     public static class ViewHolder {
-        public static TextView textView;
-        public static ImageView imageView;
+        public TextView textView;
+        public ImageView imageView;
+        public View view;
     }
 }
